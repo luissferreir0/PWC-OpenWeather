@@ -1,0 +1,13 @@
+#PWC-OpenWeather
+
+Grupo do Projeto: 
+Nome:Diogo Silva Gonçalves nº2211879 
+Nome:Luis Carlos Canelas Ferreira nº 2211882
+
+Turno: Não Definido
+Regime : Diurno
+
+
+Link do Repositorio: https://github.com/luissferreir0/PWC-OpenWeather
+
+
