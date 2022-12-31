@@ -9,5 +9,6 @@ Regime : Diurno
 
 
 Link do Repositorio: https://github.com/luissferreir0/PWC-OpenWeather
+Key API - 03236fc2ccd6906479af5df42e472dea
 
 
