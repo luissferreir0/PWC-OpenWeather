@@ -95,23 +95,12 @@
  
 }
 
-.details-container{
-    max-width: 60%;
-    justify-content: center;
-    margin: auto;
-    margin-top: 60px;
-    border-style: solid;
-    border-radius: 50px;
-    border-color: white;
-    padding: 20px;
-    height: 325px;
-}
 
 
 .city-panel-details{
     color: white;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .citynDetails{
@@ -126,7 +115,7 @@
 }
 
 .details-container{
-    max-width: 60%;
+    max-width: 35%;
     justify-content: center;
     margin: auto;
     margin-top: 60px;
@@ -134,6 +123,21 @@
     border-radius: 50px;
     border-color: white;
     padding: 20px;
-    height: 325px;
+    height: 300px;
 }
 
+.iconImagem{
+    float: left;
+    margin-right: 50px;
+}
+
+.WeatherLOGO-container{
+    float: left;
+    margin-right: 50px;
+}
+
+#WeatherLOGO{
+
+    max-width: 300px;
+    max-height: 300px;
+}

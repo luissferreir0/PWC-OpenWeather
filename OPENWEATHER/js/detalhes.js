@@ -23,38 +23,40 @@ $(window).on("load", function () {
     .done(function (res) {
         console.log(res);
 
-        $.each(res, function (index, result) {
-            console.log(result.name);
+        let iconUrl = "http://openweathermap.org/img/wn/" + res.weather[0].icon + "@2x.png";
+            console.log(res.name);
             let valor = value();
-            if (result.name == valor) {
-                $('.weatherCidade').text(result.name);//Cidade
-                $('.weatherVento').text(result.wind.speed);//Vento
-                $('.weatherGraus').text(result.wind.deg);//Vento Graus
-                $('.weatherNuvens').text(result.clouds.all);//Nuvens
-                $('.weatherPressao').text(result.main.pressure);//Pressao Atmosferica
-                $('.weatherHumidade').text(result.main.humidity);//Humidade
-                $('.weatherLongitude').text(result.coord.lon);//Longitude
-                $('.weatherLatitude').text(result.coord.lat);//Latitude
+            if (res.name == valor) {
+                $('.weatherCidade').text(res.name);//Cidade
+                $('.weatherVento').text(res.wind.speed);//Vento
+                $('.weatherGraus').text(res.wind.deg);//Vento Graus
+                $('.weatherNuvens').text(res.clouds.all);//Nuvens
+                $('.weatherPressao').text(res.main.pressure);//Pressao Atmosferica
+                $('.weatherHumidade').text(res.main.humidity);//Humidade
+                $('.weatherLongitude').text(res.coord.lon);//Longitude
+                $('.weatherLatitude').text(res.coord.lat);//Latitude
+                $('.iconImagem').attr('src',iconUrl);
 
-                $('#fav').attr('src', 'img/adicionar fav.png');// mete todas as imagnes com os corações para adicionar
-                $("#fav").attr("onclick", "addFavoritos(this.value)");
-                $('#fav').val(result.name);
+                $('.fav').attr('src', 'img/adicionar fav.png');// mete todas as imagnes com os corações para adicionar
+                $(".fav").attr("onclick", "addFavoritos(this.value)");
+                $('.fav').val(res.name);
                 var values = localStorage.getItem("tempo");
 
+                /*
                 if (values != null) {
                     values = values.split(',');
                     for (let index = 0; index < values.length; index++) {
-                        if (values[index] == result.name) {
+                        if (values[index] == res.name) {
                             $('#fav').attr('src', 'img/removerfav.png');
                             $("#fav").attr("onclick", "removerFavoritos(this.value)");
                         }
                     }
                 }
-                numero = index;
-                verificacao = false;
+                */
+               
             }
 
-        });
+    
 
     })
 })
