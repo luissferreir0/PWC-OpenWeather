@@ -1,7 +1,6 @@
 'use strict';
-// importante por causa das versoes
-var apiKey = "03236fc2ccd6906479af5df42e472dea";
-var cityIds = "2267095,2735943,2267057,2268339,2742032,2270985"
+var apiKey = "03236fc2ccd6906479af5df42e472dea"; //Variavel KEY API
+var cityIds = "2267095,2735943,2267057,2268339,2742032,2270985,3372783"// Variavel ID's Cidades
 var cloneCidade=$('.cidade').clone();//clona o codgio das linhas
 
 $( window ).on( "load", function() {  $.ajax({
@@ -15,16 +14,22 @@ $( window ).on( "load", function() {  $.ajax({
         
         $.each(res.list, function (index, result){
            
-               
+              
             var liCidade=cloneCidade.clone();
+           
+           // let iconUrl = "http://openweathermap.org/img/wn/" + result.weather[0].icon + "@2x.png";
 
             $('.weatherCidade',liCidade).text(result.name);
             $('.weatherTemperatura',liCidade).text(result.main.temp + " ºC");
             $('.weatherTempMax',liCidade).text(result.main.temp_max + " ºC");
             $('.weatherTempMin',liCidade).text(result.main.temp_min + " ºC");
             $('.weatherDescricao',liCidade).text(result.weather[0].description);
-            //$('#weatherIcon',liCidade).attr('src',"https://openweathermap.org/img/wn/" + icon + ".png");
 
+            //$('#weatherIcon',liCidade).attr('src',"https://openweathermap.org/img/wn/" + icon + ".png");
+            $('#weatherIcon',liCidade).attr('src',result.weather[0].icon);
+
+
+            //Fravoritos
             $('#fav',liCidade).attr('src','img/adicionar fav.png');
             $("#fav",liCidade).attr("onclick","addFavoritos(this.value)");
             $('#fav',liCidade).val(result.name);
@@ -33,7 +38,6 @@ $( window ).on( "load", function() {  $.ajax({
             {
                 value_exist=value_exist.split(',');
                 for (let index = 0; index < value_exist.length; index++) {
-                    //alert(value_exist+' '+result.name);
                     if(value_exist[index]==result.name)
                     {
                         $('#fav',liCidade).attr('src','img/removerfav.png');
