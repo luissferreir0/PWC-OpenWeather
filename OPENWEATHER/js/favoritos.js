@@ -2,7 +2,7 @@
 
 var verificacao = true;
 var apiKey = "03236fc2ccd6906479af5df42e472dea";
-var cityIds = "2267095,2735943,2267057,2268339,2742032,2270985"
+var cityIds = "2267095,2735943,2267057,2268339,2742032,2270985,3351879"
 var cloneCidade=$('.cidade').clone();//clona o codgio das linhas
 
 $( window ).on( "load", function() {  $.ajax({
@@ -15,7 +15,7 @@ $( window ).on( "load", function() {  $.ajax({
         
         
         $.each(res.list, function (index, result){
-              
+            let iconUrl = "http://openweathermap.org/img/wn/" + result.weather[0].icon + "@2x.png";
             var liCidade=cloneCidade.clone();
             var value_exist=localStorage.getItem('tempo');
             if(value_exist != null)
@@ -27,11 +27,12 @@ $( window ).on( "load", function() {  $.ajax({
                     {
                     $('.pos',liCidade).text(index+1);
                     $('.weatherCidade',liCidade).text(result.name);
+                    $('.link',liCidade).attr('href', "detalhes.html?name="+result.name);
                     $('.weatherTemperatura',liCidade).text(result.main.temp + " ºC");
                     $('.weatherTempMax',liCidade).text(result.main.temp_max + " ºC");
                     $('.weatherTempMin',liCidade).text(result.main.temp_min + " ºC");
                     $('.weatherDescricao',liCidade).text(result.weather[0].description);
-
+                    $('.weatherIcon #icon',liCidade).attr('src',iconUrl);
 
                     $('#fav',liCidade).attr('src','img/adicionar fav.png');
                     $("#fav",liCidade).attr("onclick","addFavoritos(this.value)");
