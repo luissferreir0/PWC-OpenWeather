@@ -17,7 +17,6 @@ $( window ).on( "load", function() {  $.ajax({
            
                
             var liCidade=cloneCidade.clone();
-            const {icon} = result.weather[0];
 
             $('.weatherCidade',liCidade).text(result.name);
             $('.weatherTemperatura',liCidade).text(result.main.temp + " ºC");
@@ -26,13 +25,10 @@ $( window ).on( "load", function() {  $.ajax({
             $('.weatherDescricao',liCidade).text(result.weather[0].description);
             //$('#weatherIcon',liCidade).attr('src',"https://openweathermap.org/img/wn/" + icon + ".png");
 
-
-
-
             $('#fav',liCidade).attr('src','img/adicionar fav.png');
             $("#fav",liCidade).attr("onclick","addFavoritos(this.value)");
             $('#fav',liCidade).val(result.name);
-            var value_exist=localStorage.getItem('cidade');// valor que ja existe
+            var value_exist=localStorage.getItem('tempo');
             if(value_exist != null)
             {
                 value_exist=value_exist.split(',');
@@ -47,12 +43,65 @@ $( window ).on( "load", function() {  $.ajax({
                 }
             }
 
-            $('.media-list').append(liCidade);//adiciona a linhas na tabela
+            $('.cidade-list').append(liCidade);
             
        });
        
      
     })
     
-
  })
+
+function addFavoritos(nome_cidade){
+    var value_exist=localStorage.getItem('tempo');
+    
+    if(value_exist != null)
+    {
+            
+        var array_cidades=value_exist+','+nome_cidade;
+        localStorage.setItem('tempo' ,array_cidades);
+       
+    }
+    else
+    {
+        localStorage.setItem('tempo' ,nome_cidade);
+    }
+    alert("Cidade adicionada com sucesso");
+    window.location.reload();
+   
+}
+
+function removerFavoritos(nome_cidade) {
+    var value_exist=localStorage.getItem('tempo');
+    value_exist=value_exist.split(',');
+    var fav="";
+    
+    if(value_exist.length>1)
+    {
+        for (let index = 0; index < value_exist.length; index++) {
+           
+            if(nome_cidade !=value_exist[index])
+            {   
+               if(index==0)
+               {
+                fav=value_exist[index];
+               }
+               else
+               {
+                fav=fav+','+value_exist[index];
+               }
+                
+            }
+            localStorage.setItem('tempo' ,fav);
+        }
+        
+    }
+    else
+    {
+        localStorage.removeItem('tempo');
+    }
+    alert("Cidade removida com sucesso");
+    window.location.reload();
+
+
+}
