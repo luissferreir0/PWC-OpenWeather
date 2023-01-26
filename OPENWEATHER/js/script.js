@@ -16,8 +16,9 @@ $( window ).on( "load", function() {  $.ajax({
            
               
             var liCidade=cloneCidade.clone();
+
            
-           // let iconUrl = "http://openweathermap.org/img/wn/" + result.weather[0].icon + "@2x.png";
+            let iconUrl = "http://openweathermap.org/img/wn/" + result.weather[0].icon + "@2x.png";
 
             $('.weatherCidade',liCidade).text(result.name);
             $('.weatherTemperatura',liCidade).text(result.main.temp + " ºC");
@@ -25,8 +26,10 @@ $( window ).on( "load", function() {  $.ajax({
             $('.weatherTempMin',liCidade).text(result.main.temp_min + " ºC");
             $('.weatherDescricao',liCidade).text(result.weather[0].description);
 
+            $(".icon").html("<img src='"+iconUrl+"'/>"); // o ultimo icon preenche todos os icons
+
             //$('#weatherIcon',liCidade).attr('src',"https://openweathermap.org/img/wn/" + icon + ".png");
-            $('#weatherIcon',liCidade).attr('src',result.weather[0].icon);
+           // $('#weatherIcon',liCidade).attr('src',result.weather[0].icon);
 
 
             //Fravoritos
@@ -109,3 +112,36 @@ function removerFavoritos(nome_cidade) {
 
 
 }
+
+$("#procurar").click(function(){
+
+    var cidade = $("#search").val().toUpperCase();
+    var encontrou_cidade=false; 
+
+    if(cidade ==""){
+
+        alert("O campo não pode ser vazio");
+        window.location.reload();
+    }
+    else{
+
+        for(let index=1;index<7;index++){
+     var  cidadelist=$('tr:eq('+index+') .name').text().toUpperCase();
+
+            if(cidade == cidadelist){
+
+                encontrou_cidade=true;
+                $('tr:eq('+index+')').css("display","");
+
+                continue;
+            }
+            $('tr:eq('+index+')').css("display","name");
+        }
+
+             if(encontrou_cidade==false){
+        alert("Não existem nenhuma cidade com esse nome");
+                  window.location = "home.html";
+             }
+    }
+
+})

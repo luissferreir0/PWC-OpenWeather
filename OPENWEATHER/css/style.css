@@ -95,5 +95,45 @@
  
 }
 
+.details-container{
+    max-width: 60%;
+    justify-content: center;
+    margin: auto;
+    margin-top: 60px;
+    border-style: solid;
+    border-radius: 50px;
+    border-color: white;
+    padding: 20px;
+    height: 325px;
+}
 
+
+.city-panel-details{
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.citynDetails{
+    display: flex;
+    vertical-align: middle;
+    margin: 0 auto;
+}
+
+.iconImagem-container{
+    float: left;
+    margin-right: 50px;
+}
+
+.details-container{
+    max-width: 60%;
+    justify-content: center;
+    margin: auto;
+    margin-top: 60px;
+    border-style: solid;
+    border-radius: 50px;
+    border-color: white;
+    padding: 20px;
+    height: 325px;
+}
 
