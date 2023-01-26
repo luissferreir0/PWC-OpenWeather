@@ -1,6 +1,6 @@
 'use strict';
 var apiKey = "03236fc2ccd6906479af5df42e472dea"; //Variavel KEY API
-var cityIds = "2267095,2735943,2267057,2268339,2742032,2270985,3372783"// Variavel ID's Cidades
+var cityIds = "2267095,2735943,2267057,2268339,2742032,2270985,3351879"// Variavel ID's Cidades
 var cloneCidade=$('.cidade').clone();//clona o codgio das linhas
 
 $( window ).on( "load", function() {  $.ajax({
@@ -21,15 +21,17 @@ $( window ).on( "load", function() {  $.ajax({
             let iconUrl = "http://openweathermap.org/img/wn/" + result.weather[0].icon + "@2x.png";
 
             $('.weatherCidade',liCidade).text(result.name);
+            $('.link',liCidade).attr('href', "detalhes.html?name="+result.name);
             $('.weatherTemperatura',liCidade).text(result.main.temp + " ºC");
             $('.weatherTempMax',liCidade).text(result.main.temp_max + " ºC");
             $('.weatherTempMin',liCidade).text(result.main.temp_min + " ºC");
             $('.weatherDescricao',liCidade).text(result.weather[0].description);
 
-            $(".icon").html("<img src='"+iconUrl+"'/>"); // o ultimo icon preenche todos os icons
+
+            //$(".icon").html("<img src='"+iconUrl+"'/>"); // o ultimo icon preenche todos os icons
 
             //$('#weatherIcon',liCidade).attr('src',"https://openweathermap.org/img/wn/" + icon + ".png");
-           // $('#weatherIcon',liCidade).attr('src',result.weather[0].icon);
+            $('.weatherIcon #icon',liCidade).attr('src',iconUrl);
 
 
             //Fravoritos
@@ -109,14 +111,20 @@ function removerFavoritos(nome_cidade) {
     }
     alert("Cidade removida com sucesso");
     window.location.reload();
-
-
 }
 
 $("#procurar").click(function(){
-
     var cidade = $("#search").val().toUpperCase();
+
     var encontrou_cidade=false; 
+    $.ajax({
+        type: "GET",
+        datatype: 'json',
+        url: "https://api.openweathermap.org/data/2.5/weather?q=" + cidade + "&units=metric&appid=" + apiKey,
+    })
+    .done(function(res){
+    console.log(res);
+
 
     if(cidade ==""){
 
@@ -125,23 +133,28 @@ $("#procurar").click(function(){
     }
     else{
 
-        for(let index=1;index<7;index++){
-     var  cidadelist=$('tr:eq('+index+') .name').text().toUpperCase();
+        for(let index=1;index<8;index++){
 
-            if(cidade == cidadelist){
+           var  cidadeList=$('tr:eq('+index+') .weatherCidade').text().toUpperCase();    
+        
+            if(cidade == cidadeList){
 
-                encontrou_cidade=true;
+                encontrou_cidade=true;    
                 $('tr:eq('+index+')').css("display","");
 
                 continue;
             }
-            $('tr:eq('+index+')').css("display","name");
+            $('tr:eq('+index+')').css("display","none");
         }
+    
 
-             if(encontrou_cidade==false){
+             if(res.name ==""){
         alert("Não existem nenhuma cidade com esse nome");
                   window.location = "home.html";
              }
     }
 
-})
+});
+
+});
+

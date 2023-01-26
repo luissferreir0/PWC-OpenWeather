@@ -18,24 +18,23 @@ $(window).on("load", function () {
     $.ajax({
         type: "GET",
         datatype: 'json',
-        url: "https://api.openweathermap.org/data/2.5/group?id=" + cityIds + "&units=metric&appid=" + apiKey,
+        url: "https://api.openweathermap.org/data/2.5/weather?q=" + value() + "&units=metric&appid=" + apiKey,
     })
     .done(function (res) {
         console.log(res);
 
-        $.each(res.list, function (index, result) {
-
+        $.each(res, function (index, result) {
+            console.log(result.name);
             let valor = value();
             if (result.name == valor) {
-                // $('#Raking_Atual').text(index+1);//adiciona a imagem consoante o array
-                $('#weatherCidade').text(result.name);//Cidade
-                $('#weatherVento').text(result.wind.speed);//Vento
-                $('#weatherGraus').text(result.wind.deg);//Vento Graus
-                $('#weatherNuvens').text(result.clouds.all);//Nuvens
-                $('#weatherPressao').text(result.main.pressure);//Pressao Atmosferica
-                $('#weatherHumidade').text(result.main.humidity);//Humidade
-                $('#weatherLongitude').text(result.coord.lon);//Longitude
-                $('#weatherLatitude').text(result.coord.lat);//Latitude
+                $('.weatherCidade').text(result.name);//Cidade
+                $('.weatherVento').text(result.wind.speed);//Vento
+                $('.weatherGraus').text(result.wind.deg);//Vento Graus
+                $('.weatherNuvens').text(result.clouds.all);//Nuvens
+                $('.weatherPressao').text(result.main.pressure);//Pressao Atmosferica
+                $('.weatherHumidade').text(result.main.humidity);//Humidade
+                $('.weatherLongitude').text(result.coord.lon);//Longitude
+                $('.weatherLatitude').text(result.coord.lat);//Latitude
 
                 $('#fav').attr('src', 'img/adicionar fav.png');// mete todas as imagnes com os corações para adicionar
                 $("#fav").attr("onclick", "addFavoritos(this.value)");
