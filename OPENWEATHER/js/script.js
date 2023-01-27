@@ -27,13 +27,7 @@ $( window ).on( "load", function() {  $.ajax({
             $('.weatherTempMax',liCidade).text(result.main.temp_max + " ºC");
             $('.weatherTempMin',liCidade).text(result.main.temp_min + " ºC");
             $('.weatherDescricao',liCidade).text(result.weather[0].description);
-
-
-            //$(".icon").html("<img src='"+iconUrl+"'/>"); // o ultimo icon preenche todos os icons
-
-            //$('#weatherIcon',liCidade).attr('src',"https://openweathermap.org/img/wn/" + icon + ".png");
             $('.weatherIcon #icon',liCidade).attr('src',iconUrl);
-
 
             //Fravoritos
             $('#fav',liCidade).attr('src','img/adicionar fav.png');
