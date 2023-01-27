@@ -2,7 +2,7 @@
 let numero;
 var verificacao = true;
 var apiKey = "03236fc2ccd6906479af5df42e472dea"; //Variavel KEY API
-var cityIds = "2267095,2735943,2267057,2268339,2742032,2270985,3372783"// Variavel ID's Cidades
+var cityIds = "2267095,2735943,3372783,2268339,2742032,2988507"// Variavel ID's Cidades
 var cloneCidade = $('.cidade').clone();//clona o codgio das linhas
 var lang ='&lang=pt'; //colocar linguagem em Portugues
 function value() {

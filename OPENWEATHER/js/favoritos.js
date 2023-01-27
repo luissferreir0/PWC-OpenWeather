@@ -1,7 +1,7 @@
 'use strict';
-var verificacao = true;
-var apiKey = "03236fc2ccd6906479af5df42e472dea";
-var cityIds = "2267095,2735943,2267057,2268339,2742032,2270985,3351879"
+var verificacao = true; //Variavel de Verificação
+var apiKey = "03236fc2ccd6906479af5df42e472dea"; //Variavel KEY API
+var cityIds = "2267095,2735943,3372783,2268339,2742032,2988507"// Variavel ID's Cidades
 var cloneCidade=$('.cidade').clone();//clona o codgio das linhas
 var lang ='&lang=pt'; //colocar linguagem em Portugues
 $( window ).on( "load", function() {  $.ajax({
@@ -14,7 +14,7 @@ $( window ).on( "load", function() {  $.ajax({
         
         
         $.each(res.list, function (index, result){
-            let iconUrl = "http://openweathermap.org/img/wn/" + result.weather[0].icon + "@2x.png";
+            let iconUrl = "http://openweathermap.org/img/wn/" + result.weather[0].icon + "@2x.png"; //link da imagem
             var liCidade=cloneCidade.clone();
             var value_exist=localStorage.getItem('tempo');
             if(value_exist != null)
