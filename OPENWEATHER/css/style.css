@@ -138,3 +138,10 @@
     float: left;
 }
 
+td{
+    text-align: center;
+}
+
+tr{
+    text-align: center;
+}
