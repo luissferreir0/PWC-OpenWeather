@@ -48,41 +48,48 @@
         </HEADER>
          <!---------------------------------------------- Conteudo da Página Forecast -------------------------------------------------------------->
          <MAIN>
+            
           <div class="tempo-Panel">
               <h1 style="text-align: center; color:white; ">Forecast 5D/3H: <span class="weatherCidade"></span></h1>
               <div class="panel-body">
                     <h4 style="text-align: center; color:rgb(172, 81, 39); ">Para procurar, insira uma cidade!</h4>
                       <div class="searchBar">
                           <input class="form-control me-2 procurar" type="search" id="search"  placeholder="Procurar" aria-label="Search">
-                          <button class="btn btn-outline-light"  id="procurar" >Procurar</button>
+                          <button class="btn btn-outline-light"  id="procurar" onclick="forcast()" >Procurar</button>
                            <div class="searchSuggestions">
                       </div>
                   
               </div>
           </div>
           
-          <table class=" table table-striped table-dark table-sm cidade-list">
-        <thead">
-          <tr>
-              
-            <th scope="col" style="color: white;">Dia</th>
-            <th scope="col" style="color: white;">Temperatura</th>
-            <th scope="col" style="color: white;">Descrição</th>
-            <th scope="col" style="color: white;">ICON</th>
-        
-          </tr>
-        </thead>
-        <tbody class="table-body" id="tabela">
-          <tr class="cidade" id="">
-
-            <td class="weatherData" style="color: white;"></td>
-            <td class="weatherTemperatura" style="color: white;"></td>
-            <td class="weatherDescricao" style="color: white;"></td>
-            <td class="weatherIcon"> <img src="" id="icon" alt=""></td>
-          </tr>
+            <label class="switch">
+                <input type="checkbox" id="voltarswitch" value="mostrarForecast()" onclick="mostrarForecast()">
+                <span class="slider round" id="switchmostrar"></span>
+            </label>
           
-          </tbody>
-        </MAIN>
+          <table class=" table table-striped table-dark table-sm cidade-list">
+            <thead">
+                <tr>
+              
+                    <th scope="col" style="color: white;">Dia</th>
+                    <th scope="col" style="color: white;">Temperatura</th>
+                    <th scope="col" style="color: white;">Descrição</th>
+                    <th scope="col" style="color: white;">ICON</th>
+        
+                </tr>
+            </thead>
+            <tbody class="table-body" id="tabela">
+             <tr class="cidade">
+
+                <td class="weatherData" style="color: white;"></td>
+                <td class="weatherTemperatura" style="color: white;"></td>
+                <td class="weatherDescricao" style="color: white;"></td>
+                <td class="weatherIcon"> <img src="" id="icon" alt=""></td>
+             </tr>
+          
+            </tbody>
+        </table>
+    </MAIN>
      </BODY>
 <script src="js/forecast.js"></script>  
 </HTML>
