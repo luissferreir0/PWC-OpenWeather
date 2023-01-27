@@ -5,7 +5,7 @@
 #### Curso:
 >- TeSP — Programação de Sistemas de Informação
 #### Unidade curricular:
->- Programação Web — Servidor
+>- Programação Web — Cliente
 #### Desenvolvido por:
 >- Grupo: 
 >- Composto por:
