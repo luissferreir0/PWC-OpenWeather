@@ -145,3 +145,17 @@ td{
 tr{
     text-align: center;
 }
+
+h5{
+    text-align: left;
+    margin-left: 2px;
+ 
+    text-decoration-line: underline;
+}
+
+h6{
+    text-align: center;
+    position: sticky;
+    font-style: italic;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
