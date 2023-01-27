@@ -2,11 +2,12 @@
 var apiKey = "03236fc2ccd6906479af5df42e472dea"; //Variavel KEY API
 var cityIds = "2267095,2735943,2267057,2268339,2742032,2270985,3351879"// Variavel ID's Cidades
 var cloneCidade=$('.cidade').clone();//clona o codgio das linhas
+var lang ='&lang=pt';
 
 $( window ).on( "load", function() {  $.ajax({
         type: "GET",
         datatype: 'json',
-        url: "https://api.openweathermap.org/data/2.5/group?id=" + cityIds + "&units=metric&appid=" + apiKey,
+        url: "https://api.openweathermap.org/data/2.5/group?id=" + cityIds + lang +"&units=metric&appid=" + apiKey,
     })
     .done(function(res){
         $("tr:has(td)").remove();//remove a primeira linha
