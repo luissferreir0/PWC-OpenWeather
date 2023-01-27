@@ -10,7 +10,7 @@ $( window ).on( "load", function() {  $.ajax({
         url: "https://api.openweathermap.org/data/2.5/group?id=" + cityIds + lang +"&units=metric&appid=" + apiKey,
     })
     .done(function(res){
-        $("tr:has(td)").remove();//remove a primeira linha
+        $("tr:has(td)").remove();//remove a primeira linha da tabela
         console.log(res);
         
         $.each(res.list, function (index, result){
@@ -21,13 +21,13 @@ $( window ).on( "load", function() {  $.ajax({
            
             let iconUrl = "http://openweathermap.org/img/wn/" + result.weather[0].icon + "@2x.png";
 
-            $('.weatherCidade',liCidade).text(result.name);
-            $('.link',liCidade).attr('href', "detalhes.html?name="+result.name);
-            $('.weatherTemperatura',liCidade).text(result.main.temp + " ºC");
-            $('.weatherTempMax',liCidade).text(result.main.temp_max + " ºC");
-            $('.weatherTempMin',liCidade).text(result.main.temp_min + " ºC");
-            $('.weatherDescricao',liCidade).text(result.weather[0].description);
-            $('.weatherIcon #icon',liCidade).attr('src',iconUrl);
+            $('.weatherCidade',liCidade).text(result.name);//Cidade
+            $('.link',liCidade).attr('href', "detalhes.html?name="+result.name);//Link para os detalhes da cidade
+            $('.weatherTemperatura',liCidade).text(result.main.temp + " ºC");//Temperatura atual
+            $('.weatherTempMax',liCidade).text(result.main.temp_max + " ºC");//Temperatura MAX
+            $('.weatherTempMin',liCidade).text(result.main.temp_min + " ºC");//Temperatura MIN
+            $('.weatherDescricao',liCidade).text(result.weather[0].description);//Descricao
+            $('.weatherIcon #icon',liCidade).attr('src',iconUrl);//ICON
 
             //Fravoritos
             $('#fav',liCidade).attr('src','img/adicionar fav.png');
@@ -51,12 +51,11 @@ $( window ).on( "load", function() {  $.ajax({
             
        });
        
-     
     })
     
  })
 
-function addFavoritos(nome_cidade){
+function addFavoritos(nome_cidade){ //Permite adicionar aos favoritos
     var value_exist=localStorage.getItem('tempo');
     
     if(value_exist != null)
@@ -75,7 +74,7 @@ function addFavoritos(nome_cidade){
    
 }
 
-function removerFavoritos(nome_cidade) {
+function removerFavoritos(nome_cidade) { //Permite remover dos favoritos
     var value_exist=localStorage.getItem('tempo');
     value_exist=value_exist.split(',');
     var fav="";
@@ -108,7 +107,7 @@ function removerFavoritos(nome_cidade) {
     window.location.reload();
 }
 
-$("#procurar").click(function(){
+$("#procurar").click(function(){ //Permite verificar se o nome introduzido na caixa de texto para procurar existe!
     var cidade = $("#search").val().toUpperCase();
 
     var encontrou_cidade=false; 

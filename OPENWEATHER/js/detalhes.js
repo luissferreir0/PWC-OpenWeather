@@ -38,26 +38,8 @@ $(window).on("load", function () {
                 $('.iconImagem').attr('src',iconUrl);//ICON IMAGEM
                 $('.weatherDescricao').text(res.weather[0].description);//Estado do tempo
 
-                $('.fav').attr('src', 'img/adicionar fav.png');// mete todas as imagnes com os corações para adicionar
-                $(".fav").attr("onclick", "addFavoritos(this.value)");
-                $('.fav').val(res.name);
                 var values = localStorage.getItem("tempo");
-
-                /*
-                if (values != null) {
-                    values = values.split(',');
-                    for (let index = 0; index < values.length; index++) {
-                        if (values[index] == res.name) {
-                            $('#fav').attr('src', 'img/removerfav.png');
-                            $("#fav").attr("onclick", "removerFavoritos(this.value)");
-                        }
-                    }
-                }
-                */
-               
             }
-
-    
 
     })
 })

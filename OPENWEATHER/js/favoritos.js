@@ -25,14 +25,15 @@ $( window ).on( "load", function() {  $.ajax({
                     if(value_exist[pos]==result.name)
                     {
                     $('.pos',liCidade).text(index+1);
-                    $('.weatherCidade',liCidade).text(result.name);
-                    $('.link',liCidade).attr('href', "detalhes.html?name="+result.name);
-                    $('.weatherTemperatura',liCidade).text(result.main.temp + " ºC");
-                    $('.weatherTempMax',liCidade).text(result.main.temp_max + " ºC");
-                    $('.weatherTempMin',liCidade).text(result.main.temp_min + " ºC");
-                    $('.weatherDescricao',liCidade).text(result.weather[0].description);
-                    $('.weatherIcon #icon',liCidade).attr('src',iconUrl);
+                    $('.weatherCidade',liCidade).text(result.name); //Cidade
+                    $('.link',liCidade).attr('href', "detalhes.html?name="+result.name); //Link para os detalhes da cidade
+                    $('.weatherTemperatura',liCidade).text(result.main.temp + " ºC");//Temperatura atual
+                    $('.weatherTempMax',liCidade).text(result.main.temp_max + " ºC");//Temperatura MAX
+                    $('.weatherTempMin',liCidade).text(result.main.temp_min + " ºC");//Temperatura MIN
+                    $('.weatherDescricao',liCidade).text(result.weather[0].description);//Descricao
+                    $('.weatherIcon #icon',liCidade).attr('src',iconUrl);//ICON
 
+                    //Permite remover dos favoritos
                     $('#fav',liCidade).attr('src','img/adicionar fav.png');
                     $("#fav",liCidade).attr("onclick","addFavoritos(this.value)");
                     $('#fav',liCidade).val(result.name);
@@ -56,7 +57,7 @@ $( window ).on( "load", function() {  $.ajax({
  })
 
 
- function removerFavoritos(nome_cidade) {
+ function removerFavoritos(nome_cidade) { //Permite remover a partir dos favoritos, algo que esteja adicionado
     var value_exist=localStorage.getItem('tempo');
     value_exist=value_exist.split(',');
     var fav="";
@@ -77,7 +78,7 @@ $( window ).on( "load", function() {  $.ajax({
                }
                 
             }
-            localStorage.setItem('tempo' ,fav);//guarda na storage e vai buscar o val ao form
+            localStorage.setItem('tempo' ,fav);//Guarda na localStorage e vai buscar o valor
         }
         
     }
