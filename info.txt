@@ -1,6 +1,7 @@
 #PWC-OpenWeather
 
 Grupo do Projeto: 
+Grupo nº115
 Nome:Diogo Silva Gonçalves nº2211879 
 Nome:Luis Carlos Canelas Ferreira nº 2211882
 
